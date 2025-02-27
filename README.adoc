@@ -1,0 +1,23 @@
+:numbered:
+
+= Vendas REST API (Backend)
+
+Backend em Java 21 com SpringBoot 3, fornecendo uma API REST.
+
+== Configurar Ambiente de Desenvolvimento
+
+=== Habilitar Spring DevTools para reiniciar o servidor quando o projeto for alterado
+
+Acesse as configurações do IntelliJ e habilite:
+
+* Build, Execution, Deployment &gt; Compiler &gt; Build project automatically
+* Advanced Settings &gt; Allow auto-make to start even if developed application is currently running
+
+=== Configurações do Projeto
+
+O arquivo link:.env.example[.env.example] deve ser duplicado como ".env".
+Este arquivo não entra no controle de versão e deve incluir as configurações como desejado para o seu ambiente de desenvolvimento.
+
+== Executando o projeto em ambiente dev
+
+Você pode executar a classe `VendasApiApplication` no seu IDE ou digitar `mvn spring-boot:run` em um terminal. Após iniciar, basta acessar http://localhost:8080
