@@ -10,6 +10,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 /**
+ * See {@link AbstractBaseModel} for the reason why all atributes are public.
  * @author Manoel Campos
  */
 @Entity @DTO

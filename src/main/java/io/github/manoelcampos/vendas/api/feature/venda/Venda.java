@@ -17,6 +17,7 @@ import java.util.List;
 import static java.util.Objects.requireNonNullElse;
 
 /**
+ * See {@link AbstractBaseModel} for the reason why all atributes are public.
  * @author Manoel Campos
  */
 @Entity @DTO

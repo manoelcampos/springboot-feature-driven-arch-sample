@@ -12,6 +12,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.br.CPF;
 
+/**
+ * See {@link AbstractBaseModel} for the reason why all atributes are public.
+ * @author Manoel Campos
+ */
 @Entity @DTO
 public class Cliente extends AbstractBaseModel {
     @NotNull @NotBlank
