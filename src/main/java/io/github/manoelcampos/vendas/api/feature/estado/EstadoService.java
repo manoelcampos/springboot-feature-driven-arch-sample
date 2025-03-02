@@ -8,4 +8,12 @@ public class EstadoService extends AbstractCrudService<Estado, EstadoRepository>
     public EstadoService(final EstadoRepository repository) {
         super(repository);
     }
+
+    @Override
+    public Estado save(final Estado estado) {
+        if(estado.descricao.equalsIgnoreCase(estado.sigla))
+            throw new IllegalStateException("A descrição do estado não pode ser igual à sigla");
+
+        return super.save(estado);
+    }
 }

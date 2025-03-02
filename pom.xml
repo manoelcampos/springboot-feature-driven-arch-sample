@@ -120,6 +120,20 @@
             <artifactId>dtogen</artifactId>
             <version>2.1.5</version>
         </dependency>
+
+        <dependency>
+            <!--
+            A tiny lib that uses bytecode manipulation to provide automatic implementation of accessors in Java classes.
+            It changes classes annotated with @Entity, replacing reads/writes to fields
+            with calls to getter/setter methods (if existing).
+
+            https://github.com/manoelcampos/auto-class-accessors-java
+            -->
+            <groupId>io.github.manoelcampos</groupId>
+            <artifactId>auto-class-accessors</artifactId>
+            <version>1.0.0</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>

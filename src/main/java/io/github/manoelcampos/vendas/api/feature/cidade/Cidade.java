@@ -8,6 +8,12 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Objects;
+
+/**
+ * See {@link AbstractBaseModel} for the reason why all atributes are public.
+ * @author Manoel Campos
+ */
 @Entity
 @Table (uniqueConstraints = {
         @UniqueConstraint(name = ConstraintKeys.UC_CIDADE_DESCRICAO, columnNames = "descricao"),
@@ -40,6 +46,19 @@ public class Cidade extends AbstractBaseModel {
 
     public Cidade(final long id, final String descricao) {
         super(id);
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        System.out.println("Getting cidade.descricao: " + descricao);
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        System.out.println("Setting cidade.descricao: " + descricao);
+
+        if(Objects.requireNonNullElse(descricao, "").isBlank())
+            throw new IllegalArgumentException("Descrição da cidade não pode ser vazia");
         this.descricao = descricao;
     }
 }
