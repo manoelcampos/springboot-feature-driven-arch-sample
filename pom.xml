@@ -132,7 +132,6 @@
             <groupId>io.github.manoelcampos</groupId>
             <artifactId>auto-class-accessors</artifactId>
             <version>1.0.0</version>
-            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
