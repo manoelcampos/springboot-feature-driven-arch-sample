@@ -37,7 +37,7 @@ public class VendaService extends AbstractCrudService<Venda, VendaRepository> {
         for (ItemVenda item : venda.itens) {
             final var produto = item.produto;
 
-            final Long prodId = requireNonNullElse(produto, new Produto()).getId();
+            final Long prodId = requireNonNullElse(produto, new Produto()).id;
             if (prodId == null) {
                 throw new IllegalStateException("Produto não informado");
             }
