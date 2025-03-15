@@ -1,4 +1,4 @@
-package sample.application.api.feature.order;
+package sample.application.api.feature.purchase;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

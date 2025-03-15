@@ -1,4 +1,4 @@
-package sample.application.api.feature.order;
+package sample.application.api.feature.purchase;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

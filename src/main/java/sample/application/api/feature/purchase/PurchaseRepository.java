@@ -1,4 +1,4 @@
-package sample.application.api.feature.order;
+package sample.application.api.feature.purchase;
 
 import org.springframework.stereotype.Repository;
 import sample.application.api.shared.EntityRepository;

@@ -1,4 +1,4 @@
-package sample.application.api.feature.order;
+package sample.application.api.feature.purchase;
 
 import org.springframework.stereotype.Service;
 import sample.application.api.feature.product.Product;

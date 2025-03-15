@@ -1,4 +1,4 @@
-package sample.application.api.feature.order;
+package sample.application.api.feature.purchase;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.manoelcampos.dtogen.DTO;
