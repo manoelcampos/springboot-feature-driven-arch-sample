@@ -16,7 +16,7 @@ import java.util.Objects;
  */
 @Entity
 @Table (uniqueConstraints = {
-        @UniqueConstraint(name = ConstraintKeys.UC_CIDADE_DESCRICAO, columnNames = "descricao"),
+    @UniqueConstraint(name = ConstraintKeys.UC_CIDADE_DESCRICAO, columnNames = "descricao"),
 })
 @DTO
 public class Cidade extends AbstractBaseModel {
