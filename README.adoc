@@ -20,4 +20,4 @@ Este arquivo não entra no controle de versão e deve incluir as configurações
 
 == Executando o projeto em ambiente dev
 
-Você pode executar a classe `VendasApiApplication` no seu IDE ou digitar `mvn spring-boot:run` em um terminal. Após iniciar, basta acessar http://localhost:8080
+Você pode executar a classe `SampleApiApplication` no seu IDE ou digitar `mvn spring-boot:run` em um terminal. Após iniciar, basta acessar http://localhost:8080

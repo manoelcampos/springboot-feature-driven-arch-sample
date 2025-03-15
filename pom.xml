@@ -17,6 +17,7 @@
         <java.version>23</java.version>
         <maven.compiler.version>3.14.0</maven.compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <typescriptgenerator.version>3.2.1263</typescriptgenerator.version>
     </properties>
 
     <dependencies>
@@ -120,6 +121,18 @@
             <artifactId>dtogen</artifactId>
             <version>2.1.5</version>
         </dependency>
+
+        <dependency>
+            <!--
+            Gera interfaces TypeScript a partir das classes Model e DTO do projeto.
+            Tais interfaces são utilizadas pelo frontend.
+            Trabalha em conjunto com o typescript-generator-maven-plugin
+            https://github.com/vojtechhabarta/typescript-generator
+            -->
+            <groupId>cz.habarta.typescript-generator</groupId>
+            <artifactId>typescript-generator-spring</artifactId>
+            <version>${typescriptgenerator.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -161,7 +174,9 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>prepare-package</phase>
+                        <!-- JavaDoc needs to be generated earlier since the typescript generator will use
+                        the xml file created by the xml-doclet here. -->
+                        <phase>process-sources</phase>
                         <goals>
                             <goal>javadoc</goal>
                         </goals>
@@ -172,13 +187,57 @@
                             <docletArtifact>
                                 <groupId>com.manticore-projects.tools</groupId>
                                 <artifactId>xml-doclet</artifactId>
-                                <version>2.0.2</version>
+                                <version>2.0.3</version>
                                 <!-- Uses the Uber jar that has all dependencies -->
                                 <classifier>all</classifier>
                             </docletArtifact>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <!--
+                Automatiza o processo de geração de interfaces TypeScript
+                (a partir das classes Model e DTO do projeto) quando o projeto é compilado.
+
+                Execute ./mvnw clean compile para o plugin gerar as classes Model e DTO em TypeScript.
+                https://github.com/vojtechhabarta/typescript-generator
+                -->
+                <groupId>cz.habarta.typescript-generator</groupId>
+                <artifactId>typescript-generator-maven-plugin</artifactId>
+                <version>${typescriptgenerator.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>compile</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jsonLibrary>jackson2</jsonLibrary>
+                    <outputFileType>implementationFile</outputFileType>
+                    <outputFile>./models.generated.ts</outputFile>
+                    <nullabilityDefinition>nullInlineUnion</nullabilityDefinition>
+                    <optionalPropertiesDeclaration>questionMarkAndNullableType</optionalPropertiesDeclaration>
+                    <nullableAnnotations>
+                        <nullableAnnotation>org.jetbrains.annotations.Nullable</nullableAnnotation>
+                    </nullableAnnotations>
+                    <requiredAnnotations>
+                        <requiredAnnotation>jakarta.validation.constraints.NotEmpty</requiredAnnotation>
+                        <requiredAnnotation>jakarta.validation.constraints.NotBlank</requiredAnnotation>
+                        <requiredAnnotation>jakarta.validation.constraints.NotNull</requiredAnnotation>
+                        <requiredAnnotation>org.jetbrains.annotations.NotNull</requiredAnnotation>
+                    </requiredAnnotations>
+                    <javadocXmlFiles><javadocXmlFile>./target/javadoc.xml</javadocXmlFile></javadocXmlFiles>
+                    <classesImplementingInterfaces>sample.application.api.shared.model.BaseModel</classesImplementingInterfaces>
+                    <outputKind>module</outputKind>
+
+                    <!-- Avoids adding a timestamp to the generated ts file (for better version control) -->
+                    <noFileComment>true</noFileComment>
+                </configuration>
             </plugin>
         </plugins>
     </build>
