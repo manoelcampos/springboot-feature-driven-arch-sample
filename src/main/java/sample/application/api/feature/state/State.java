@@ -11,10 +11,8 @@ import sample.application.api.shared.model.AbstractBaseModel;
 
 import java.util.Objects;
 
-/**
- * See {@link AbstractBaseModel} for the reason why all atributes are public.
- * @author Manoel Campos
- */
+/// See [AbstractBaseModel] for the reason why all atributes are public.
+/// @author Manoel Campos
 @Entity
 @Table(uniqueConstraints = {
     @UniqueConstraint(name = ConstraintKeys.UC_STATE_NAME, columnNames = "name"),

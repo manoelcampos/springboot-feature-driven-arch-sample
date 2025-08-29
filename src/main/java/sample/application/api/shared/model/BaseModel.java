@@ -18,7 +18,7 @@ public interface BaseModel extends Serializable {
     }
 
     /**
-     * {@return true ou false} se a entidade está sendo inserida no banco ou não.
+     * @return true ou false se a entidade está sendo inserida no banco ou não.
      */
     @JsonIgnore
     default boolean isInserting(){

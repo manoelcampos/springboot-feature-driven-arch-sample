@@ -12,7 +12,7 @@ public class StateService extends AbstractCrudService<State, StateRepository> {
     @Override
     public State save(final State state) {
         if(state.name.equalsIgnoreCase(state.abbreviation))
-            throw new IllegalStateException("A descrição do estado não pode ser igual à sigla");
+            throw new IllegalStateException("The country state description cannot be equal to its abbreviation");
 
         return super.save(state);
     }

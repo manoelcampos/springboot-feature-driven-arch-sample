@@ -8,13 +8,11 @@ import sample.application.api.shared.model.AbstractBaseModel;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Implementação base de um {@link CrudService} para
- * executar operações CRUD em um {@link AbstractController}.
- * @param <T> {@inheritDoc}
- * @param <R> {@inheritDoc}
- * @author Manoel Campos
- */
+/// Implementação base de um [CrudService] para
+/// executar operações CRUD em um [AbstractController].
+/// @param <T> {@inheritDoc}
+/// @param <R> {@inheritDoc}
+/// @author Manoel Campos
 @Service
 public abstract class AbstractCrudService<T extends AbstractBaseModel, R extends EntityRepository<T>> extends CrudService<T, R> {
     public AbstractCrudService(final R repository) {

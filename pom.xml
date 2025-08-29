@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.3</version>
+        <version>3.5.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.github.manoelcampos</groupId>
@@ -111,9 +111,9 @@
 
         <dependency>
             <!--
-            Gera DTOs Java para classes Model automaticamente.
-            As classes DTOs são geradas, no mesmo pacote da classe model anotada com @DTO,
-            quando o projeto é compilado (mesmo diretamente pelo IDE, sem usar maven).
+            Automatically generates Java DTOs for Model classes.
+            DTO records are generated, in the same package as the @DTO-annotated model class,
+            when the project is built (even directly through the IDE, without using Maven).
 
             https://github.com/manoelcampos/dtogen
             -->
@@ -124,9 +124,9 @@
 
         <dependency>
             <!--
-            Gera interfaces TypeScript a partir das classes Model e DTO do projeto.
-            Tais interfaces são utilizadas pelo frontend.
-            Trabalha em conjunto com o typescript-generator-maven-plugin
+            Generates TypeScript interfaces from the project's Model classes and DTO records.
+            These interfaces are used by the frontend.
+            Works in conjunction with the typescript-generator-maven-plugin
             https://github.com/vojtechhabarta/typescript-generator
             -->
             <groupId>cz.habarta.typescript-generator</groupId>
@@ -146,7 +146,7 @@
                 -->
                 <groupId>io.github.manoelcampos</groupId>
                 <artifactId>auto-class-accessors-maven-plugin</artifactId>
-                <version>1.0.1</version>
+                <version>1.0.4</version>
                 <executions><execution><goals><goal>apply</goal></goals></execution></executions>
             </plugin>
 
@@ -198,10 +198,10 @@
 
             <plugin>
                 <!--
-                Automatiza o processo de geração de interfaces TypeScript
-                (a partir das classes Model e DTO do projeto) quando o projeto é compilado.
+                Automates the process of generating TypeScript interfaces
+                (from the project's Model classes and DTO records) when the project is built.
 
-                Execute ./mvnw clean compile para o plugin gerar as classes Model e DTO em TypeScript.
+                Run ./mvnw clean compile for the plugin to generate the Models and DTOs in TypeScript.
                 https://github.com/vojtechhabarta/typescript-generator
                 -->
                 <groupId>cz.habarta.typescript-generator</groupId>
@@ -235,7 +235,7 @@
                     <classesImplementingInterfaces>sample.application.api.shared.model.BaseModel</classesImplementingInterfaces>
                     <outputKind>module</outputKind>
 
-                    <!-- Avoids adding a timestamp to the generated ts file (for better version control) -->
+                    <!-- Avoids adding a timestamp to the generated .ts file (for better version control) -->
                     <noFileComment>true</noFileComment>
                 </configuration>
             </plugin>

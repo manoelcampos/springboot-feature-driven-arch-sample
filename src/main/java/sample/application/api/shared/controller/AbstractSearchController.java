@@ -14,14 +14,12 @@ import static java.util.Objects.requireNonNullElse;
 import static org.springframework.core.annotation.AnnotationUtils.findAnnotation;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
-/**
- * Classe base para a implementação de {@link RestController} que irão fornecer apenas operações de consulta
- * (a serem implementadas pelas classes filhas).
- * Cada classe filha deve incluir a anotação {@link RestController} e {@link RequestMapping}.
- * @param <T> tipo da entidade que o controller irá manipular
- *
- * @author Manoel Campos
- */
+/// Classe base para a implementação de [RestController] que irão fornecer apenas operações de consulta
+/// (a serem implementadas pelas classes filhas).
+/// Cada classe filha deve incluir a anotação [RestController] e [RequestMapping].
+/// @param <T> tipo da entidade que o controller irá manipular
+///
+/// @author Manoel Campos
 public class AbstractSearchController<T extends AbstractBaseModel, R extends EntityRepository<T>, S extends AbstractCrudService<T, R>> {
     /**
      * Caminho relativo do controller na anotação {@link RequestMapping}.

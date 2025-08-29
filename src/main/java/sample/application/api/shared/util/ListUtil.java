@@ -27,7 +27,7 @@ public final class ListUtil {
     /**
      * Adiciona um item a uma lista e retorna a própria lista.
      * @param list lista para adicionar um item
-     * @param item item a ser adicioknado
+     * @param item item a ser adicionado
      * @return a lista passada por parâmetro
      * @param <T> tipo dos elementos da lista
      */

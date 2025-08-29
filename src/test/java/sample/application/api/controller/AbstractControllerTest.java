@@ -6,25 +6,21 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Uma classe abstrata para a criação de testes de APIs REST,
- * implementadas por meio de uma classe {@link RestController}.
- *
- * @author Manoel Campos
- * @see <a href="https://www.baeldung.com/spring-5-webclient">WebClient and WebClientTest</a>
- * @see <a href="https://docs.spring.io/spring-framework/reference/testing/webtestclient.html#webtestclient-context-config">Spring WebClientTest</a>
- * @see <a href="https://34codefactory.medium.com/spring-5-webclient-and-webtestclient-tutorial-code-factory-84e32978149a">Spring WebClientTest Tutorial</a>
- * @see <a href="https://rieckpil.de/spring-webtestclient-for-efficient-testing-of-your-rest-api/">testing-of-your-rest-api</a>
- */
+/// An abstract class for creating REST API tests,
+/// implemented through a [RestController] annotated class.
+///
+/// @author Manoel Campos
+/// @link [WebClient and WebClientTest](https://www.baeldung.com/spring-5-webclient)
+/// @link [Spring WebClientTest](https://docs.spring.io/spring-framework/reference/testing/webtestclient.html#webtestclient-context-config)
+/// @link [Spring WebClientTest Tutorial](a href="https://34codefactory.medium.com/spring-5-webclient-and-webtestclient-tutorial-code-factory-84e32978149a)
+/// @link [testing-of-your-rest-api](https://rieckpil.de/spring-webtestclient-for-efficient-testing-of-your-rest-api/)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public abstract class AbstractControllerTest {
     @Autowired
     protected WebTestClient client;
 
-    /**
-     * {@link LocalServerPort} obtém a porta do servidor Spring com a instância da aplicação para testes automatizados.
-     * Não é necessário, mas pode ser usado para saber qual porta está sendo usada.
-     */
+    /// [LocalServerPort] gets the HTTP server port where the application is running for testing.
+    /// Not required, it but can be used to know which port the server is listening to.
     @LocalServerPort
     private int port;
 

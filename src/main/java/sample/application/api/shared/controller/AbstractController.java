@@ -3,6 +3,7 @@ package sample.application.api.shared.controller;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
@@ -19,18 +20,16 @@ import java.util.stream.Collectors;
 import static org.springframework.http.HttpStatus.CONFLICT;
 import static sample.application.api.shared.controller.RestExceptionHandler.newConflictException;
 
-/**
- * Classe base para a implementação de {@link RestController} que fornecem todas as operações CRUD
- * e podem trabalhar tanto com entidades (classes model) quanto com DTOs.
- * Se um DTO for passado no parâmetro D, os métodos {@link #insert(AbstractBaseModel)}
- * e {@link #update(long, AbstractBaseModel)} irão receber um DTO no lugar de uma entidade correspondente.
- *
- * <p>Cada classe filha deve incluir a anotação {@link RestController} e {@link RequestMapping}.</p>
- *
- * @param <T> tipo da entidade que o controller irá manipular
- * @param <R> tipo do repositório que acesso os dados da entidade no banco
- * @author Manoel Campos
- */
+/// Classe base para a implementação de [RestController] que fornecem todas as operações CRUD
+/// e podem trabalhar tanto com entidades (classes model) quanto com DTOs.
+/// Se um DTO for passado no parâmetro D, os métodos [#insert(AbstractBaseModel)]
+/// e [#update(long,AbstractBaseModel)] irão receber um DTO no lugar de uma entidade correspondente.
+///
+/// Cada classe filha deve incluir a anotação [RestController] e [RequestMapping].
+///
+/// @param <T> tipo da entidade que o controller irá manipular
+/// @param <R> tipo do repositório que acesso os dados da entidade no banco
+/// @author Manoel Campos
 public abstract class AbstractController<T extends AbstractBaseModel, R extends EntityRepository<T>, S extends AbstractCrudService<T, R>> extends AbstractSearchController<T, R, S> {
     /**
      * Validador customizado para a entidade manipulada pelo controller.
@@ -47,7 +46,7 @@ public abstract class AbstractController<T extends AbstractBaseModel, R extends 
 
     @DeleteMapping("{id}")
     @Transactional
-    public ResponseEntity<T> delete(@Valid @PathVariable final long id) {
+    public ResponseEntity<T> delete(@Valid @Min(1) @PathVariable final long id) {
         if (service.deleteById(id))
             return ResponseEntity.noContent().build();
 
@@ -55,7 +54,7 @@ public abstract class AbstractController<T extends AbstractBaseModel, R extends 
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<T> findById(@Valid @PathVariable final long id) {
+    public ResponseEntity<T> findById(@Valid @Min(1) @PathVariable final long id) {
         return service.findById(id)
                       .map(ResponseEntity::ok)
                       .orElseThrow(() -> newNotFoundException(id));
@@ -93,7 +92,7 @@ public abstract class AbstractController<T extends AbstractBaseModel, R extends 
      */
     @PutMapping("{id}")
     @Transactional
-    public void update(@Valid @PathVariable final long id, @Valid @RequestBody final T obj) {
+    public void update(@Valid @Min(1) @PathVariable final long id, @Valid @RequestBody final T obj) {
         if (!obj.isSameId(id)) {
             final var msg = "O ID informado (%d) não corresponde com o ID do %s (%d)".formatted(id, service.getEntityClassName(), obj.getId());
             throw newConflictException(msg);

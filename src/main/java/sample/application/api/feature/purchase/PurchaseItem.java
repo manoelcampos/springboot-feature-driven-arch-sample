@@ -9,10 +9,8 @@ import sample.application.api.config.ConstraintKeys;
 import sample.application.api.feature.product.Product;
 import sample.application.api.shared.model.AbstractBaseModel;
 
-/**
- * See {@link AbstractBaseModel} for the reason why all atributes are public.
- * @author Manoel Campos
- */
+/// See [AbstractBaseModel] for the reason why all atributes are public.
+/// @author Manoel Campos
 @Entity @DTO
 public class PurchaseItem extends AbstractBaseModel {
     @NotNull @ManyToOne @JsonIgnore

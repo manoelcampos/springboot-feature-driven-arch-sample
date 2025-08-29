@@ -16,12 +16,10 @@ import java.util.List;
 
 import static java.util.Objects.requireNonNullElse;
 
-/**
- * See {@link AbstractBaseModel} for the reason why all atributes are public.
- * We cannot call the class Order, since it is a reserved word in SQL,
- * otherwise, we need to explicitly change the table name.
- * @author Manoel Campos
- */
+/// See [AbstractBaseModel] for the reason why all atributes are public.
+/// We cannot call the class Order, since it is a reserved word in SQL,
+/// otherwise, we need to explicitly change the table name.
+/// @author Manoel Campos
 @Entity @DTO
 public class Purchase extends AbstractBaseModel {
     @NotNull @ManyToOne

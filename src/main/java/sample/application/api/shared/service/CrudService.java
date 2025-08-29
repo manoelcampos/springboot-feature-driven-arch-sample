@@ -10,17 +10,15 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-/**
- * Fornece um contrato para implementação de {@link Service}s que
- * executam operações CRUD em um {@link AbstractController}.
- * Encapsula todas as regras de negócio, deixando o controller
- * lidar apenas com a camada HTTP
- * (como response, request, códigos de status, redirect, etc).
- * @param <T> tipo da entidade que o service irá manipular
- * @param <R> tipo do repositório que acesso os dados da entidade no banco
- *
- * @author Manoel Campos
- */
+/// Fornece um contrato para implementação de [Service]s que
+/// executam operações CRUD em um [AbstractController].
+/// Encapsula todas as regras de negócio, deixando o controller
+/// lidar apenas com a camada HTTP
+/// (como response, request, códigos de status, redirect, etc).
+/// @param <T> tipo da entidade que o service irá manipular
+/// @param <R> tipo do repositório que acesso os dados da entidade no banco
+///
+/// @author Manoel Campos
 public abstract class CrudService<T extends BaseModel, R extends EntityRepository<T>> {
     public final R repository;
     public final String entityClassName;
@@ -47,14 +45,12 @@ public abstract class CrudService<T extends BaseModel, R extends EntityRepositor
         return typeParameters.length == 0 ? "Objeto" : typeParameters[0].getClass().getSimpleName();
     }
 
-    /**
-     * Obtém um {@link Supplier} de {@link NoSuchElementException} com a mensagem passada como parâmetro.
-     * Tal método pode ser chamado em operações como {@link Optional#orElseThrow(Supplier)}
-     * ao chamar métodos como {@link EntityRepository#findById(Object)} e qualquer
-     * outro que retorne um Optional.
-     * @param msg mensagem de erro a ser exibida quando a exceção retornada pelo Supplier for lançada
-     * @return o supplier de {@link NoSuchElementException}
-     */
+    /// Obtém um [Supplier] de [NoSuchElementException] com a mensagem passada como parâmetro.
+    /// Tal método pode ser chamado em operações como [#orElseThrow(Supplier)]
+    /// ao chamar métodos como [EntityRepository#findById(Object)] e qualquer
+    /// outro que retorne um Optional.
+    /// @param msg mensagem de erro a ser exibida quando a exceção retornada pelo Supplier for lançada
+    /// @return o supplier de [NoSuchElementException]
     protected Supplier<NoSuchElementException> notFoundSupplier(final String msg) {
         return () -> new NoSuchElementException(msg);
     }

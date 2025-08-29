@@ -22,6 +22,16 @@ export interface Customer extends AbstractBaseModel {
 
 /**
  * See ,{@link AbstractBaseModel}, for the reason why all atributes are public.
+ * author @author Manoel Campos
+ */
+export interface Product extends AbstractBaseModel {
+    description: string;
+    price: number;
+    amount: number;
+}
+
+/**
+ * See ,{@link AbstractBaseModel}, for the reason why all atributes are public.
  * We cannot call the class Order, since it is a reserved word in SQL,
  * otherwise, we need to explicitly change the table name.
  * author @author Manoel Campos
@@ -54,16 +64,6 @@ export interface PurchaseItem extends AbstractBaseModel {
      * Depois da venda inserida, a quantidade não pode ser alterada.
      */
     quant: number;
-}
-
-/**
- * See ,{@link AbstractBaseModel}, for the reason why all atributes are public.
- * author @author Manoel Campos
- */
-export interface Product extends AbstractBaseModel {
-    description: string;
-    price: number;
-    amount: number;
 }
 
 /**

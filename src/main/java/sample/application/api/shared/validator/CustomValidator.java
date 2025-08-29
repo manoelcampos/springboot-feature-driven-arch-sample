@@ -7,28 +7,25 @@ import org.springframework.web.context.annotation.RequestScope;
 import sample.application.api.shared.model.AbstractBaseModel;
 import sample.application.api.shared.service.CrudService;
 
-/**
- * Define um contrato para implementação de {@link Validator}s personalizados.
- * É definida como uma classe concreta (no lugar de uma interface)
- * apenas para permitir injeção de dependência de um validator para uma {@link AbstractBaseModel}
- * específica, quando uma subclasse desta aqui não for criada,
- * indicando que a entidade não possui validações customizadas.
- *
- * <p>Nestes casos, o Spring pode instanciar um objeto desta classe (já que ela é concreta).
- * Com isto, não é preciso armazenar
- * null em um objeto validator de um {@link CrudService}
- * e assim não é preciso escrever verificações para evitar NullPointerExceptions.
- * Mesmo que não exista uma classe para validar uma determinada entity,
- * a classe service de tal entity terá uma instância de um validator padrão
- * (mas que não realiza nenhuma validação personalizada).
- * </p>
- *
- * <p><b>AVISO</b>: Subclasses concretas não devem ser criadas a partir desta classe,
- * mas sim de {@link AbstractCustomValidator}, pois tal classe fornecerá
- * parte da implementação.</p>
- *
- * @author Manoel Campos
- */
+/// Define um contrato para implementação de [Validator]s personalizados.
+/// É definida como uma classe concreta (no lugar de uma interface)
+/// apenas para permitir injeção de dependência de um validator para uma [AbstractBaseModel]
+/// específica, quando uma subclasse desta aqui não for criada,
+/// indicando que a entidade não possui validações customizadas.
+///
+/// Nestes casos, o Spring pode instanciar um objeto desta classe (já que ela é concreta).
+/// Com isto, não é preciso armazenar
+/// null em um objeto validator de um [CrudService]
+/// e assim não é preciso escrever verificações para evitar NullPointerExceptions.
+/// Mesmo que não exista uma classe para validar uma determinada entity,
+/// a classe service de tal entity terá uma instância de um validator padrão
+/// (mas que não realiza nenhuma validação personalizada).
+///
+/// **AVISO**: Subclasses concretas não devem ser criadas a partir desta classe,
+/// mas sim de [AbstractCustomValidator], pois tal classe fornecerá
+/// parte da implementação.
+///
+/// @author Manoel Campos
 @Component @RequestScope
 public class CustomValidator<T extends AbstractBaseModel> implements Validator {
     /**

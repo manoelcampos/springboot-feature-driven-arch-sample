@@ -1,12 +1,8 @@
 package sample.application.api.shared.exception;
 
-
-
-
 /**
  * @author Manoel Campos
  */
-
 public class FieldValidationException extends RuntimeException {
     private final String fieldName;
 

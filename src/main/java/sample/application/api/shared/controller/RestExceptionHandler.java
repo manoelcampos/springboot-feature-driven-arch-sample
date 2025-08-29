@@ -21,39 +21,31 @@ import java.util.stream.Collectors;
 import static org.springframework.http.HttpStatus.CONFLICT;
 import static sample.application.api.shared.util.ConstraintViolation.findUniqueConstraintMessage;
 
-/**
- * Captura exceções específicas para retornar um {@link HttpError}
- * com uma mensagem amigável.
- *
- * @author Manoel Campos
- */
+/// Captura exceções específicas para retornar um [HttpError]
+/// com uma mensagem amigável.
+/// @author Manoel Campos
 @ControllerAdvice
 public class RestExceptionHandler {
     private static final Logger log = LogManager.getLogger(RestExceptionHandler.class);
 
-    /**
-     * Captura exceções {@link ResponseStatusException}
-     * para permitir emitir uma mensagem junto com o código de status.
-     * Como os {@link AbstractController} são genéricos, não é possível retornar
-     * uma String no corpo da mensagem, mas sim um objeto {@link AbstractBaseModel}.
-     * Desta forma, a exceção precisa ser capturada aqui e retornada uma {@link ResponseEntity}
-     * String com a mensagem de erro personalizada.
-     *
-     * @param ex exceção capturada
-     * @return {@link ResponseEntity} com a mensagem de erro personalizada
-     */
+    /// Captura exceções [ResponseStatusException]
+    /// para permitir emitir uma mensagem junto com o código de status.
+    /// Como os [AbstractController] são genéricos, não é possível retornar
+    /// uma String no corpo da mensagem, mas sim um objeto [AbstractBaseModel].
+    /// Desta forma, a exceção precisa ser capturada aqui e retornada uma [ResponseEntity]
+    /// String com a mensagem de erro personalizada.
+    ///
+    /// @param ex exceção capturada
+    /// @return [ResponseEntity] com a mensagem de erro personalizada
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<HttpError> handleResponseStatusException(final ResponseStatusException ex) {
         return ResponseEntity.status(ex.getStatusCode()).body(new HttpError(ex));
     }
 
-    /**
-     * Captura exceções {@link DataIntegrityViolationException}
-     * para verificar se foram lançadas devido a uma violação
-     * de Foreign Key
-     * @param ex exceção lançada
-     * @return {@link ResponseEntity} com a mensagem de erro personalizada
-     */
+    /// Captura exceções [DataIntegrityViolationException]
+    /// para verificar se foram lançadas devido a uma violação de Foreign Key
+    /// @param ex exceção lançada
+    /// @return [ResponseEntity] com a mensagem de erro personalizada
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<HttpError> handleDataIntegrityViolationException(final DataIntegrityViolationException ex) {
         final var status = CONFLICT;
