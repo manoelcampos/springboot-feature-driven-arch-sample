@@ -137,18 +137,22 @@
 
     <build>
         <plugins>
-            <plugin>
-                <!--
-                A maven plugin that uses bytecode manipulation to provide automatic implementation of accessors in Java classes.
-                It changes classes, replacing reads/writes to fields with calls to getter/setter methods (if existing).
+            <!--
+            A maven plugin that uses bytecode manipulation to provide automatic implementation of accessors in Java classes.
+            It changes classes, replacing reads/writes to fields with calls to getter/setter methods (if existing).
 
-                https://github.com/manoelcampos/auto-class-accessors-maven-plugin
-                -->
+            https://github.com/manoelcampos/auto-class-accessors-maven-plugin
+            -->
+
+            <!--
+            Experimental
+            <plugin>
                 <groupId>io.github.manoelcampos</groupId>
                 <artifactId>auto-class-accessors-maven-plugin</artifactId>
                 <version>1.0.3</version>
                 <executions><execution><goals><goal>apply</goal></goals></execution></executions>
             </plugin>
+            -->
 
             <plugin>
                 <!-- Create executable jar -->

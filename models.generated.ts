@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 /**
- * See ,{@link AbstractBaseModel}, for the reason why all atributes are public.
+ * [See , {@link AbstractBaseModel},  for the reason why all atributes are public.]
  * author @author Manoel Campos
  */
 export interface City extends AbstractBaseModel {
@@ -11,7 +11,7 @@ export interface City extends AbstractBaseModel {
 }
 
 /**
- * See ,{@link AbstractBaseModel}, for the reason why all atributes are public.
+ * [See , {@link AbstractBaseModel},  for the reason why all atributes are public.]
  * author @author Manoel Campos
  */
 export interface Customer extends AbstractBaseModel {
@@ -21,7 +21,7 @@ export interface Customer extends AbstractBaseModel {
 }
 
 /**
- * See ,{@link AbstractBaseModel}, for the reason why all atributes are public.
+ * [See , {@link AbstractBaseModel},  for the reason why all atributes are public.]
  * author @author Manoel Campos
  */
 export interface Product extends AbstractBaseModel {
@@ -31,9 +31,9 @@ export interface Product extends AbstractBaseModel {
 }
 
 /**
- * See ,{@link AbstractBaseModel}, for the reason why all atributes are public.
+ * [See , {@link AbstractBaseModel},  for the reason why all atributes are public.
  * We cannot call the class Order, since it is a reserved word in SQL,
- * otherwise, we need to explicitly change the table name.
+ * otherwise, we need to explicitly change the table name.]
  * author @author Manoel Campos
  */
 export interface Purchase extends AbstractBaseModel {
@@ -46,7 +46,7 @@ export interface Purchase extends AbstractBaseModel {
 }
 
 /**
- * See ,{@link AbstractBaseModel}, for the reason why all atributes are public.
+ * [See , {@link AbstractBaseModel},  for the reason why all atributes are public.]
  * author @author Manoel Campos
  */
 export interface PurchaseItem extends AbstractBaseModel {
@@ -67,7 +67,7 @@ export interface PurchaseItem extends AbstractBaseModel {
 }
 
 /**
- * See ,{@link AbstractBaseModel}, for the reason why all atributes are public.
+ * [See , {@link AbstractBaseModel},  for the reason why all atributes are public.]
  * author @author Manoel Campos
  */
 export interface State extends AbstractBaseModel {
@@ -77,7 +77,8 @@ export interface State extends AbstractBaseModel {
 
 /**
  * [All classes that have the , {@link Entity},  annotation must inherit from this class.
- * Those classes have all atributes define as public, since the auto-class-accessors-maven-plugin is being used.
+ * Those classes have all atributes define as public, since the
+ * [auto-class-accessors-maven-plugin](https://github.com/manoelcampos/auto-class-accessors-maven-plugin) is being used.
  * This way, when there is a read/write to a field,
  * the respective getter/getter is called instead (if existing).
  * The plugin is just included inside the pom.xml and the magic happens when the project is built.]

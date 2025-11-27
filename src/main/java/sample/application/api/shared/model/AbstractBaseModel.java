@@ -6,7 +6,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 /// All classes that have the [Entity] annotation must inherit from this class.
-/// Those classes have all atributes define as public, since the auto-class-accessors-maven-plugin is being used.
+/// Those classes have all atributes define as public, since the
+/// [auto-class-accessors-maven-plugin](https://github.com/manoelcampos/auto-class-accessors-maven-plugin) is being used.
 /// This way, when there is a read/write to a field,
 /// the respective getter/getter is called instead (if existing).
 /// The plugin is just included inside the pom.xml and the magic happens when the project is built.
