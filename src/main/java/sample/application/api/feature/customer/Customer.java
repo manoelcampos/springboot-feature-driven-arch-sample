@@ -1,6 +1,7 @@
 package sample.application.api.feature.customer;
 
 import io.github.manoelcampos.dtogen.DTO;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
@@ -19,6 +20,8 @@ public class Customer extends AbstractBaseModel {
     public String name;
 
     @NotNull @NotBlank
+    // TODO: Needs to check if the UK name is being generated in the expected format, because we have 2 annotations to define a UK
+    @Column(unique = true)
     public String socialSecurityNumber;
 
     @ManyToOne
