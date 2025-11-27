@@ -54,7 +54,7 @@ public abstract class AbstractController<T extends AbstractBaseModel, R extends 
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<T> findById(@Valid @Min(1) @PathVariable final long id) {
+    public ResponseEntity<T> findById(@Min(1) @PathVariable final long id) {
         return service.findById(id)
                       .map(ResponseEntity::ok)
                       .orElseThrow(() -> newNotFoundException(id));
