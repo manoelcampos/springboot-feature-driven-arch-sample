@@ -2,7 +2,7 @@
 
 = Vendas REST API (Backend)
 
-Backend em Java 21 com SpringBoot 3, fornecendo uma API REST.
+Backend em Java 23 com SpringBoot 3, fornecendo uma API REST.
 
 == Configurar Ambiente de Desenvolvimento
 

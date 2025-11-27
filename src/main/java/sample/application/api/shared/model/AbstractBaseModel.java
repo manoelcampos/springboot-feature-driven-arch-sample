@@ -10,7 +10,7 @@ import java.util.Objects;
 /// [auto-class-accessors-maven-plugin](https://github.com/manoelcampos/auto-class-accessors-maven-plugin) is being used.
 /// This way, when there is a read/write to a field,
 /// the respective getter/getter is called instead (if existing).
-/// The plugin is just included inside the pom.xml and the magic happens when the project is built.
+/// The plugin is just included inside the pom.xml and the m`agic happens when the project is built.
 ///
 /// @author Manoel Campos
 @MappedSuperclass
