@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.8</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>io.github.manoelcampos</groupId>
+    <artifactId>springboot-reusable-arch-sample</artifactId>
+    <version>1.0.0</version>
+    <name>springboot-reusable-arch-sample</name>
+
+    <properties>
+        <java.version>23</java.version>
+        <maven.compiler.version>3.14.0</maven.compiler.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <typescriptgenerator.version>3.2.1263</typescriptgenerator.version>
+        <dtogen.version>2.1.7</dtogen.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <!-- Reactive HTTP Client (also used for API/controller tests) -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- OpenAPI (Swagger) libs -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-common</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <!-- end -->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- Provides fast application restarts, LiveReload, and configurations for enhanced development experience. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <!--
+            Suporte for .env files
+            https://github.com/paulschwarz/spring-dotenv
+            -->
+            <groupId>me.paulschwarz</groupId>
+            <artifactId>spring-dotenv</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>24.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <!--
+            Automatically generates Java DTOs for Model classes.
+            DTO records are generated, in the same package as the @DTO-annotated model class,
+            when the project is built (even directly through the IDE, without using Maven).
+
+            https://github.com/manoelcampos/dtogen
+            -->
+            <groupId>io.github.manoelcampos</groupId>
+            <artifactId>dtogen</artifactId>
+            <version>${dtogen.version}</version>
+        </dependency>
+
+        <dependency>
+            <!--
+            Generates TypeScript interfaces from the project's Model classes and DTO records.
+            These interfaces are used by the frontend.
+            Works in conjunction with the typescript-generator-maven-plugin
+            https://github.com/vojtechhabarta/typescript-generator
+            -->
+            <groupId>cz.habarta.typescript-generator</groupId>
+            <artifactId>typescript-generator-spring</artifactId>
+            <version>${typescriptgenerator.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <source>${maven.compiler.release}</source>
+                    <target>${maven.compiler.release}</target>
+                    <encoding>UTF-8</encoding>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>io.github.manoelcampos</groupId>
+                            <artifactId>dtogen</artifactId>
+                            <version>${dtogen.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>-processor</arg>
+                        <arg>io.github.manoelcampos.dtogen.DTOProcessor</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <!--
+            A maven plugin that uses bytecode manipulation to provide automatic implementation of accessors in Java classes.
+            It changes classes, replacing reads/writes to fields with calls to getter/setter methods (if existing).
+
+            https://github.com/manoelcampos/auto-class-accessors-maven-plugin
+            -->
+            <plugin>
+                <groupId>io.github.manoelcampos</groupId>
+                <artifactId>auto-class-accessors-maven-plugin</artifactId>
+                <version>1.0.4</version>
+                <executions><execution><goals><goal>apply</goal></goals></execution></executions>
+            </plugin>
+
+            <plugin>
+                <!-- Create executable jar -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${project.parent.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.11.2</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <doclint>none</doclint>
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- JavaDoc needs to be generated earlier since the typescript generator will use
+                        the xml file created by the xml-doclet here. -->
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                        <configuration>
+                            <useStandardDocletOptions>false</useStandardDocletOptions>
+                            <doclet>com.manticore.tools.xmldoclet.XmlDoclet</doclet>
+                            <additionalOptions>-d "${project.build.directory}"</additionalOptions>
+                            <docletArtifact>
+                                <groupId>com.manticore-projects.tools</groupId>
+                                <artifactId>xml-doclet</artifactId>
+                                <version>2.1.2</version>
+                                <!-- Uses the Uber jar that has all dependencies -->
+                                <classifier>all</classifier>
+                            </docletArtifact>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <!--
+                Automates the process of generating TypeScript interfaces
+                (from the project's Model classes and DTO records) when the project is built.
+
+                Run ./mvnw clean compile for the plugin to generate the Models and DTOs in TypeScript.
+                https://github.com/vojtechhabarta/typescript-generator
+                -->
+                <groupId>cz.habarta.typescript-generator</groupId>
+                <artifactId>typescript-generator-maven-plugin</artifactId>
+                <version>${typescriptgenerator.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>compile</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jsonLibrary>jackson2</jsonLibrary>
+                    <outputFileType>implementationFile</outputFileType>
+                    <outputFile>../frontend/app/model/models.generated.ts</outputFile>
+                    <nullabilityDefinition>nullInlineUnion</nullabilityDefinition>
+                    <optionalPropertiesDeclaration>questionMarkAndNullableType</optionalPropertiesDeclaration>
+                    <nullableAnnotations>
+                        <nullableAnnotation>org.jetbrains.annotations.Nullable</nullableAnnotation>
+                    </nullableAnnotations>
+                    <requiredAnnotations>
+                        <requiredAnnotation>jakarta.validation.constraints.NotEmpty</requiredAnnotation>
+                        <requiredAnnotation>jakarta.validation.constraints.NotBlank</requiredAnnotation>
+                        <requiredAnnotation>jakarta.validation.constraints.NotNull</requiredAnnotation>
+                        <requiredAnnotation>org.jetbrains.annotations.NotNull</requiredAnnotation>
+                    </requiredAnnotations>
+                    <javadocXmlFiles><javadocXmlFile>./target/javadoc.xml</javadocXmlFile></javadocXmlFiles>
+                    <classesImplementingInterfaces>
+                        <class>sample.application.api.shared.model.BaseModel</class>
+                        <class>io.github.manoelcampos.dtogen.DTORecord</class>
+                    </classesImplementingInterfaces>
+                    <outputKind>module</outputKind>
+
+                    <!-- Avoids adding a timestamp to the generated .ts file (for better version control) -->
+                    <noFileComment>true</noFileComment>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

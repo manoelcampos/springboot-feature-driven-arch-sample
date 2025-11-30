@@ -1,0 +1,121 @@
+:numbered:
+
+= Frontend image:https://github.com/iftopalmas/sigad/actions/workflows/frontend-build.yml/badge.svg[frontend-build,link=https://github.com/iftopalmas/sigad/actions/workflows/frontend-build.yml]
+
+Aplicação em http://nodejs.org[Node.js] utilizando framework http://nextjs.org[NextJS] com https://react.dev[React],
+fornecendo uma interface responsiva. A aplicação consome os serviços REST disponibilizados
+pelo link:../sigad-backend[backend].
+
+== Recursos
+
+* https://postcss.org/[PostCSS] com https://mantine.dev/styles/postcss-preset[mantine-postcss-preset]
+* https://www.typescriptlang.org/[TypeScript]
+* https://storybook.js.org/[Storybook]
+* Configuração do https://jestjs.io/[Jest] com https://testing-library.com/docs/react-testing-library/intro[React Testing Library]
+* Configuração do ESLint com https://github.com/mantinedev/eslint-config-mantine[eslint-config-mantine]
+
+== Ferramentas
+
+O projeto usa yarn como gerenciador de pacotes. Para instalar a versão utilizada pelo projeto, execute:
+
+[source,bash]
+----
+make install
+
+----
+
+== Fazer build e executar a aplicação
+
+O arquivo link:.env.sample[.env.sample] deve ser duplicado como ".env".
+Este arquivo não entra no controle de versão e deve incluir as configurações como desejado para o seu ambiente de desenvolvimento.
+
+Para instalar as dependências, fazer build do projeto e executar a aplicação, execute:
+
+[source,bash]
+----
+make app
+----
+
+== Criar container docker
+
+Para criar um container Docker com a aplicação, execute:
+
+[source,bash]
+----
+make docker
+----
+
+== Scripts npm
+
+=== Scripts de Build e Dev
+
+* `dev` – inicia o servidor de desenvolvimento
+* `build` – empacota a aplicação para produção
+* `analyze` – analisa o pacote da aplicação com https://www.npmjs.com/package/@next/bundle-analyzer[@next/bundle-analyzer]
+
+=== Scripts de Teste
+
+* `typecheck` – verifica os tipos do TypeScript
+* `lint` – executa o ESLint
+* `prettier:check` – verifica os arquivos com Prettier
+* `jest` – executa testes com o jest
+* `jest:watch` – inicia o modo de observação do jest
+* `test` – executa os scripts `jest`, `prettier:check`, `lint` e `typecheck`
+
+=== Outros scripts
+
+* `storybook` – inicia o servidor de desenvolvimento do Storybook
+* `storybook:build` – empacota o Storybook para produção em `storybook-static`
+* `prettier:write` – formata todos os arquivos com o Prettier
+
+== IDE
+
+É aconselhável o uso do IntelliJ como IDE para desenvolvimento.
+Como o projeto usa ESLint para definir o estilo de formatação e verificar problemas no código,
+quando se usa recursos do IntelliJ como ALT+ENTER para correção de problemas ou para fazer algum import,
+o IntelliJ não irá usar as configurações definidas no link:.eslintrc.cjs[.eslintrc.cjs].
+
+Assim, algumas configurações são sugeridas.
+Para isso, acesse o menu `Settings` no IntelliJ e procure a opção `Editor &gt; Code Style &gt; TypeScript` no menu lateral esquerdo (ou digite TypeScript no campo de busca para achar a opção). Agora siga os passos abaixo:
+
+* Usar Aspas Simples: vá na aba `Punctuation` e selecione a opção destacada abaixo:
+
+image:../images/intellij-single-quotes.png[Configurando uso de Aspas Simples]
+
+* Incluir espaços ao redor das chaves de comandos import/export: vá na aba `Spaces` e selecione a opção destacada abaixo:
+
+image:../images/intellij-spaces-around-import-export-braces.png[Espaços ao redor das chaves de comandos import/export]
+
+* Identação: a identação dos arquivos TypeScript está configurada para 4 espaços. Para confirmar que o IDE está configurado adequadamente, abra um arquivo `.ts` ou `.tsx` e veja se o canto inferior direito do IDE aparece como na imagem abaixo. Se não, clique em tal local e configure para 4 espaços:
+
+image::../images/intellij-identation.png[]
+
+=== Ordem dos Imports
+
+Infelizmene, apesar de haver configuração para definir a ordem dos imports,
+eles não ficam como definido no link:.eslintrc.cjs[.eslintrc.cjs].
+Assim, para resolver este problema, acesse a opção `Languages &amp; Frameworks &gt; JavaScript &gt; Code Quality Tools &gt; ESLint` na janela `Settings` do IntelliJ (ou digite ESLint no campo de busca) e marque a opção `Run eslint --fix on save`. Desta forma, se tiver erros no código, apenas salve o arquivo que o ESLint pode resolver alguns desses problemas (como a ordem incorreta dos imports).
+
+== Documentações das Bibliotecas
+
+Aqui estão os links para as documentações das bibliotecas utilizadas no projeto:
+
+* link:[https://nextjs.org/docs] - Next.js é um framework React para construção de aplicações web.
+
+* link:[https://mantine.dev/getting-started/] - Mantine é um conjunto de componentes React acessíveis e customizáveis com um monte de recursos internos.
+
+* link:[https://ui.mantine.dev/] - UI Mantine é uma coleção de componentes React responsivos e acessíveis.
+
+* link:[https://icflorescu.github.io/mantine-datatable/] - Mantine Datatable é uma tabela de dados React personalizável, responsiva e fácil de usar.
+
+* link:[https://tablericons.com/] - Tabler Icons é uma coleção gratuita e open-source de ícones.
+
+* link:[https://zod.dev/] - Zod é uma biblioteca de validação de esquema TypeScript com foco em tipagem e performance.
+
+== Links e Artigos Úteis para Entender a Estrutura do Projeto
+
+"How to Structure Your Next.js App with the New App Router" - link:https://betterprogramming.pub/how-to-structure-your-next-js-app-with-the-new-app-router-61bf2bf5a20d[]
+
+"Next.js v13: App Directory" - link:https://medium.com/walmartglobaltech/next-js-v13-app-directory-ecd58c477603[]
+
+"Atomic Design: O que é, como surgiu e sua importância para a criação do Design System" - link:https://medium.com/pretux/atomic-design-o-que-%C3%A9-como-surgiu-e-sua-import%C3%A2ncia-para-a-cria%C3%A7%C3%A3o-do-design-system-e3ac7b5aca2c[]
