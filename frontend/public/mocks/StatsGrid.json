@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "title": "Média de Desempenho",
+      "icon": "chart_bar",
+      "value": "87%",
+      "diff": 5,
+      "period": "mensal"
+    },
+    {
+      "title": "Usuários Ativos",
+      "icon": "users",
+      "value": "580",
+      "diff": 15,
+      "period": "mensal"
+    },
+    {
+      "title": "Taxa de Adesão",
+      "icon": "handshake",
+      "value": "78%",
+      "diff": 2,
+      "period": "anual"
+    },
+    {
+      "title": "Sugestões Implementadas",
+      "icon": "lightbulb",
+      "value": "42",
+      "diff": 7,
+      "period": "mensal"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+= Interfaces Model/DTO
+
+O arquivo link:models.generated.ts[models.generated.ts] nesta pasta contém as interfaces que representam as classes Model (classes de negócio) e DTO usadas pelo frontend.
+
+Tal arquivo é gerado automaticamente, a partir das classes java correspondentes, quando o backend é compilado usando maven.
+
+Desta forma, nenhuma alteração deve ser feita em tal arquivo, pois elas serão substituídas a cada build do backend.
+
+Ver link:../../../sigad-backend/README.adoc[README do backend] para mais detalhes.
