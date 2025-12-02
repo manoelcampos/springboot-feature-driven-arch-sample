@@ -2,6 +2,8 @@
 
 = React/SpringBoot Reusable Arch Sample Web App
 
+image:https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/api-build.yml/badge.svg[api-build,link=https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/api-build.yml] image:https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/frontend-build.yml/badge.svg[frontend-build,link=https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/frontend-build.yml]
+
 A full-stack sample application that demonstrates how to automate code generation to keep backend and frontend in sync in a type-safe way. It pairs Java (backend) and TypeScript (frontend) so they work seamlessly together: Java models/DTOs are converted into TypeScript interfaces, enabling end-to-end type safety across both sides of the stack.
 
 The backend is a Spring Boot (Java) application where Models and DTOs are the single source of truth. During the build, Maven plugins generate corresponding TypeScript interfaces that the frontend (Next.js + TypeScript) imports directly. This eliminates manual duplication and prevents drift: whenever you change backend models/DTOs, the frontend types are regenerated automatically.
