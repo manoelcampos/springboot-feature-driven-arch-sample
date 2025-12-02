@@ -1,4 +1,4 @@
-:numbered:
+:sectnums:
 
 = E-Commerce REST API (Backend)
 

@@ -1,0 +1,106 @@
+:sectnums:
+
+= React/SpringBoot Reusable Arch Sample Web App
+
+A full-stack sample application that demonstrates how to automate code generation to keep backend and frontend in sync in a type-safe way. It pairs Java (backend) and TypeScript (frontend) so they work seamlessly together: Java models/DTOs are converted into TypeScript interfaces, enabling end-to-end type safety across both sides of the stack.
+
+The backend is a Spring Boot (Java) application where Models and DTOs are the single source of truth. During the build, Maven plugins generate corresponding TypeScript interfaces that the frontend (Next.js + TypeScript) imports directly. This eliminates manual duplication and prevents drift: whenever you change backend models/DTOs, the frontend types are regenerated automatically.
+
+== Project layout
+
+- backend: Spring Boot application (Java, Maven)
+- frontend: Next.js application (TypeScript, Yarn)
+
+== How the automation works (type-safe sync)
+
+1. You model your domain in the backend (Java classes) and mark DTOs using the https://github.com/manoelcampos/dtogen[dtogen] annotation processor.
+2. When you build the backend, Maven runs a pipeline that:
+   - Generates Java DTO records from annotated model classes (dtogen).
+   - Produces a javadoc.xml file (maven-javadoc-plugin with xml-doclet) exposing field/property docs and nullability.
+   - Invokes the TypeScript generator plugin to create TypeScript interfaces for both Models and DTOs,
+     containing the same documentation (from generated javadoc.xml file).
+3. The generated interfaces are written into the frontend at `frontend/app/model/models.generated.ts` and imported by the app.
+
+This means the frontend types always reflect the backend’s current API/contracts — no manual edits, and compile-time safety on both sides.
+
+== Key tools involved
+
+=== Backend (Maven) build pipeline highlights
+
+- Spring Boot 3.5.x: Web, Validation, Data JPA; WebFlux for reactive client/testing.
+- http://springdoc.org[springdoc-openapi]: Auto-generates and serves OpenAPI/Swagger UI for the REST API.
+- https://github.com/manoelcampos/dtogen[dtogen] (annotation processor): Generates Java DTO records from your model classes when compiling.
+- https://github.com/manoelcampos/auto-class-accessors-maven-plugin[auto-class-accessors-maven-plugin]: Bytecode manipulation to automatically wire getter/setter access calls, reducing boilerplate.
+- maven-javadoc-plugin + https://github.com/manticore-projects/xml-doclet[xml-doclet]: Generates `target/javadoc.xml`, enabling the TS generator to carry over documentation and annotations.
+- https://github.com/vojtechhabarta/typescript-generator[typescript-generator-maven-plugin]:
+  - Generates `frontend/app/model/models.generated.ts` from backend classes/DTOs at compile phase.
+  - Configured to honor nullability annotations (e.g., `@NotNull`, JetBrains annotations).
+
+=== Frontend highlights
+
+- Next.js 15 + React 19, TypeScript 5
+- Yarn 4 + Node 23.x
+- Mantine UI, Zod (schema validation), Jest/Testing Library, ESLint/Prettier/Stylelint
+
+== Quick start
+
+=== Prerequisites
+
+- Java 23
+- Node 23.1.0 (as defined in `frontend/package.json` engines)
+- Yarn 4.x (the repo uses `"packageManager": "yarn@4.5.1"`)
+
+=== Generate types and run backend
+
+From the `backend` directory:
+
+```
+./mvnw clean compile
+./mvnw spring-boot:run
+```
+
+This will:
+
+- Compile the backend
+- Generate Java DTOs and the TypeScript interfaces for the frontend at `frontend/app/model/models.generated.ts`
+- Start the Spring Boot app
+
+Swagger UI (OpenAPI) will be available at:
+
+- http://localhost:8080/swagger-ui.html
+
+=== Install deps and run frontend
+
+From the `frontend` directory:
+
+```
+yarn install
+yarn dev
+```
+
+The Next.js dev server will start by default at http://localhost:3000.
+
+== Typical workflow for changing models
+
+1. Edit or add a model/DTO in the backend (Java).
+2. Rebuild backend: `./mvnw clean compile`.
+3. The TypeScript interfaces are regenerated automatically in `frontend/app/model/models.generated.ts`.
+4. In the frontend, import and use the updated types. TypeScript will guide you to any necessary changes.
+
+== Notes on nullability and validation
+
+The TypeScript generator is configured to interpret Java nullability annotations, e.g.:
+
+- `jakarta.validation.constraints.NotNull`
+- `org.jetbrains.annotations.NotNull` / `@Nullable`
+
+This preserves intent in the generated TS types (e.g., optional vs. required, nullable unions), enhancing type safety.
+
+== Tech stack summary
+
+- Backend: Spring Boot, Web/WebFlux, Validation, Data JPA; Maven build with dtogen, auto-class-accessors, javadoc xml-doclet, and typescript-generator.
+- Frontend: Next.js, React, TypeScript, Mantine, Zod; Jest Testing Library; ESLint/Prettier/Stylelint.
+
+== License
+
+This is a sample project. Refer to the repository for licensing details.
