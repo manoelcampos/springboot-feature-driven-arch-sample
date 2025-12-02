@@ -1,6 +1,6 @@
 :sectnums:
 
-= E-Commerce REST API (Backend)
+= E-Commerce REST API (Backend) image:https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/api-build.yml/badge.svg[api-build,link=https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/api-build.yml]
 
 Java 23 backend with Spring Boot 3, providing a REST API.
 
