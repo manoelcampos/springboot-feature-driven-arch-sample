@@ -1,6 +1,6 @@
 :sectnums:
 
-= React/SpringBoot Reusable Arch Sample Web App
+= React.js/SpringBoot Reusable Arch Sample Web App
 
 image:https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/api-build.yml/badge.svg[api-build,link=https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/api-build.yml] image:https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/frontend-build.yml/badge.svg[frontend-build,link=https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/frontend-build.yml]
 
