@@ -1,6 +1,6 @@
 :sectnums:
 
-= Frontend Web App image:https://github.com/iftopalmas/sigad/actions/workflows/frontend-build.yml/badge.svg[frontend-build,link=https://github.com/iftopalmas/sigad/actions/workflows/frontend-build.yml]
+= Frontend Web App image:https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/frontend-build.yml/badge.svg[frontend-build,link=https://github.com/manoelcampos/react-springboot-feature-driven-arch-sample/actions/workflows/frontend-build.yml]
 
 Application built TypeScript on http://nodejs.org[Node.js] using the http://nextjs.org[Next.js] framework with https://react.dev[React] library and link:https://mantine.dev[Mantine] components. The application consumes the REST services exposed by the link:../backend[backend].
 
@@ -107,3 +107,4 @@ Here are the links to the documentation of the libraries used in the project:
 - "How to Structure Your Next.js App with the New App Router" - link:https://betterprogramming.pub/how-to-structure-your-next-js-app-with-the-new-app-router-61bf2bf5a20d[]
 - "Next.js v13: App Directory" - link:https://medium.com/walmartglobaltech/next-js-v13-app-directory-ecd58c477603[]
 - "Atomic Design: What it is, how it emerged, and its importance for creating a Design System" - link:https://medium.com/pretux/atomic-design-o-que-%C3%A9-como-surgiu-e-sua-import%C3%A2ncia-para-a-cria%C3%A7%C3%A3o-do-design-system-e3ac7b5aca2c[]
+Os slides estão em https://app.presentations.ai/view/vIadqjos7v
