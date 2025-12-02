@@ -27,11 +27,13 @@ jobs:
           java-version: '23'
           distribution: 'adopt'
           cache: maven
-      - name: Build with Maven
+      - name: Maven Build
         run: mvn -B package -DskipTests=true --file backend/pom.xml
-      # Executa os testes em um passo separado para isolar os logs de build e de testes
+      # Isolate tests from build to show results in a different log category on GitHub
       - name: Run Tests
-        run: mvn -Pall test --file backend/pom.xml
+        run: |
+          cp backend/.env.example backend/.env  
+          mvn -Pall test --file backend/pom.xml
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       #- name: Update dependency graph

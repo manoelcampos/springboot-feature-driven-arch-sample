@@ -24,7 +24,9 @@ export interface Customer extends AbstractBaseModel {
 }
 
 /**
- * [See , {@link AbstractBaseModel},  for the reason why all atributes are public.]
+ * [A product that can be sold in the store.
+ * 
+ * See , {@link AbstractBaseModel},  for the reason why all atributes are public.]
  * author @author Manoel Campos
  */
 export interface Product extends AbstractBaseModel {
@@ -34,7 +36,8 @@ export interface Product extends AbstractBaseModel {
 }
 
 /**
- * [See , {@link AbstractBaseModel},  for the reason why all atributes are public.
+ * [A purchase from a given , {@link Customer}, .
+ * See , {@link AbstractBaseModel},  for the reason why all atributes are public.
  * We cannot call the class Order, since it is a reserved word in SQL,
  * otherwise, we need to explicitly change the table name.]
  * author @author Manoel Campos
