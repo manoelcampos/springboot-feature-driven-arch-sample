@@ -8,6 +8,8 @@ A full-stack sample application that demonstrates how to automate code generatio
 
 The backend is a Spring Boot (Java) application where Models and DTOs are the single source of truth. During the build, Maven plugins generate corresponding TypeScript interfaces that the frontend (Next.js + TypeScript) imports directly. This eliminates manual duplication and prevents drift: whenever you change backend models/DTOs, the frontend types are regenerated automatically.
 
+For more details, check this presentation: https://app.presentations.ai/view/vIadqjos7v[Modern Java and TypeScript: a match made in heaven?].
+
 == Project layout
 
 - link:backend[backend]: Spring Boot application (Java, Maven)
