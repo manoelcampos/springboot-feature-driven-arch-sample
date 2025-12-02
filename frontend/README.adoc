@@ -1,14 +1,8 @@
 :sectnums:
 
-= Frontend image:https://github.com/iftopalmas/sigad/actions/workflows/frontend-build.yml/badge.svg[frontend-build,link=https://github.com/iftopalmas/sigad/actions/workflows/frontend-build.yml]
+= Frontend Web App image:https://github.com/iftopalmas/sigad/actions/workflows/frontend-build.yml/badge.svg[frontend-build,link=https://github.com/iftopalmas/sigad/actions/workflows/frontend-build.yml]
 
-Application built on http://nodejs.org[Node.js] using the http://nextjs.org[Next.js] framework with https://react.dev[React] library and link:https://mantine.dev[Mantine] components. The application consumes the REST services exposed by the link:../backend[backend].
-
-== Features
-
-* https://www.typescriptlang.org/[TypeScript]
-* https://jestjs.io/[Jest] configured with https://testing-library.com/docs/react-testing-library/intro[React Testing Library]
-* ESLint configured with https://github.com/mantinedev/eslint-config-mantine[eslint-config-mantine]
+Application built TypeScript on http://nodejs.org[Node.js] using the http://nextjs.org[Next.js] framework with https://react.dev[React] library and link:https://mantine.dev[Mantine] components. The application consumes the REST services exposed by the link:../backend[backend].
 
 == Tooling
 

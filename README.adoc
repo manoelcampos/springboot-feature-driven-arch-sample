@@ -10,8 +10,8 @@ The backend is a Spring Boot (Java) application where Models and DTOs are the si
 
 == Project layout
 
-- backend: Spring Boot application (Java, Maven)
-- frontend: Next.js application (TypeScript, Yarn)
+- link:backend[backend]: Spring Boot application (Java, Maven)
+- link:frontend[frontend]: Next.js application (TypeScript, Yarn)
 
 == How the automation works (type-safe sync)
 

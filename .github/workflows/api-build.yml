@@ -10,10 +10,10 @@ name: api-build
 on:
   push:
     branches: [ "main", "master" ]
-    paths: 'backend/**'
+    paths: ['backend/**']
   pull_request:
     branches: [ "main", "master" ]
-    paths: 'backend/**'
+    paths: ['backend/**']
   workflow_call:  # allows you to call this workflow from other ones
 
 jobs:

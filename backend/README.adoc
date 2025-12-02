@@ -28,7 +28,7 @@ This project automates several repetitive tasks in the build, such as generating
 
 === DTOGen: automatic DTO record generation
 
-https://github.com/manoelcampos/dtogen[DTOGen] is configured as a Java annotation processor to generate immutable DTO `record`s from your model entities.
+https://github.com/manoelcampos/dtogen[DTOGen] is a Java annotation processor configured to generate immutable DTO `record`s from your model entities.
 
 - *How it works*:
 ** Add `@DTO` to a model/entity class and DTOGen generates a Java `record` in the same package with the fields/selectors you define via annotations.
