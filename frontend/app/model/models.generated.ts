@@ -1,14 +1,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * [See , {@link AbstractBaseModel},  for the reason why all atributes are public.]
- * author @author Manoel Campos
- */
+/** A City somewhere in the world. */
 export interface City extends AbstractBaseModel {
     name: string;
     /**
-     * The country state where the city is.
+     * The country state where the city is located.
      */
     state: State;
 }
@@ -20,12 +17,15 @@ export interface City extends AbstractBaseModel {
 export interface Customer extends AbstractBaseModel {
     name: string;
     socialSecurityNumber: string;
+    /**
+     * The city where the customer lives.
+     */
     city?: City | null;
 }
 
 /**
  * [A product that can be sold in the store.
- * 
+ *
  * See , {@link AbstractBaseModel},  for the reason why all atributes are public.]
  * author @author Manoel Campos
  */
@@ -95,7 +95,7 @@ export interface AbstractBaseModel extends BaseModel {
 
 /**
  * A ,{@link DTORecord Data Transfer Object}, for ,{@link City},.
- * param @param state The country state where the city is.
+ * param @param state The country state where the city is located.
  */
 export interface CityDTO extends DTORecord<City> {
     id?: number | null;
@@ -105,6 +105,7 @@ export interface CityDTO extends DTORecord<City> {
 
 /**
  * A ,{@link DTORecord Data Transfer Object}, for ,{@link Customer},.
+ * param @param city The city where the customer lives.
  */
 export interface CustomerDTO extends DTORecord<Customer> {
     id?: number | null;

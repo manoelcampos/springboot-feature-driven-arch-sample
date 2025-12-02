@@ -24,6 +24,9 @@ public class Customer extends AbstractBaseModel {
     @Column(unique = true)
     public String socialSecurityNumber;
 
+    /**
+     * The city where the customer lives.
+     */
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = ConstraintKeys.FK_CUSTOMER__CITY))
     @DTO.MapToId

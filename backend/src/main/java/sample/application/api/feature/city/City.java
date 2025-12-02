@@ -10,6 +10,7 @@ import sample.application.api.shared.model.AbstractBaseModel;
 
 import java.util.Objects;
 
+/// A City somewhere in the world.
 /// See [AbstractBaseModel] for the reason why all atributes are public.
 /// @author Manoel Campos
 @Entity
